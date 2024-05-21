@@ -1,40 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
+import { Component, OnInit, Input } from '@angular/core';
+import {CommonModule, NgOptimizedImage} from "@angular/common";
+import {FaceSnap} from "../models/face-snap.model";
+import {FaceSnapsService} from "../services/face-snaps.service";
 
 @Component({
   selector: 'app-face-snap',
   standalone: true,
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage, CommonModule
   ],
   templateUrl: './face-snap.component.html',
   styleUrl: './face-snap.component.scss'
 })
 export class FaceSnapComponent implements OnInit {
-  title!: string;
-  description!: string;
-  creationDate!: Date;
-  snaps! : number;
-  imageUrl! : string;
+  @Input() faceSnap!: FaceSnap;
   buttonText! : String;
 
+  constructor(private faceSnapsService: FaceSnapsService) {}
 
   ngOnInit(): void {
-    this.title = 'Mon Application Angular';
-    this.description = 'Ceci est une petite description de mon projet en Angular';
-    this.creationDate = new Date();
-    this.snaps = 6;
-    this.imageUrl = "https://logowik.com/content/uploads/images/angular9826.logowik.com.webp";
     this.buttonText = "J'aime";
 
   }
 
   onSnap(): void {
     if (this.buttonText === "J'aime") {
-      this.snaps ++;
+      this.faceSnapsService.likeFaceSnapById(this.faceSnap.id, "like");
       this.buttonText = "Je n'aime plus";
     } else {
-      this.snaps --;
+      this.faceSnapsService.likeFaceSnapById(this.faceSnap.id, "unlike");
       this.buttonText = "J'aime";
     }
 

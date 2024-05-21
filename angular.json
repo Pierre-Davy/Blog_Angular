@@ -4,6 +4,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "MonAppAngular": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr-FR": {
+            "translation": "src/locale/messages.fr.xlf",
+            "baseHref": "fr-FR/"
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,6 +48,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": ["fr-FR"] ,
             "outputPath": "dist/mon-app-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
