@@ -1,6 +1,7 @@
 .face-snap-card {
   box-sizing: border-box;
-  width: 400px;
+  min-width: 400px;
+  width: 30%;
   margin: 20px auto;
   padding: 10px 30px;
   box-shadow: lightgray 4px 4px 20px;
@@ -14,21 +15,6 @@
 .face-snap-card p {
   font-weight: 400;
   font-size: 1rem;
-}
-.face-snap-card button {
-  background-color: transparent;
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border: none;
-  box-shadow: lightgray 4px 4px 4px;
-  margin-right: 20px;
-  outline: none;
-  font-size: 1rem;
-  font-weight: 500;
-}
-.face-snap-card button:active {
-  transform: translate(1px, 1px);
-  box-shadow: lightgray 0 0 5px;
 }
 
 .snapped {
